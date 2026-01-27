@@ -1,8 +1,11 @@
+// 0/1 knackpack
+
 #include<iostream>
 #include<algorithm>
 using namespace std;
 
 int main(){
+    
 
     int profit[] = {0,1,2,6,5};
     int weight[] = {0,2,3,4,5};
