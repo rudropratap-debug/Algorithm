@@ -1,38 +1,44 @@
-#include <iostream>
-#include <vector>
+#include<iostream>
+#include<climits>
+#include<vector>
+
 using namespace std;
 
-int main() {
-    int n, amount;
-    cin >> n;
+int main(){
+    int num;
+    cout<<"Enter number of coins: ";
+    cin>>num;
 
-    vector<int> coins(n);
-    for(int i = 0; i < n; i++)
-        cin >> coins[i];
+    vector<int>coins(num);
+    cout<<"Enter choice of coins: ";
 
-    cin >> amount;
+    for(int i = 0;  i < num; i++){
+        cin>>coins[i];
+    }
 
-    int INF = 1e9;
+    int amount;
+    cout<<"Enter amount: ";
+    cin>>amount;
 
-    vector<vector<int>> dp(n + 1, vector<int>(amount + 1, INF));
+    vector<vector<int>>dp(num + 1, vector<int>(amount + 1, INT_MAX - 1));
 
-    for(int i = 0; i <= n; i++)
+    for(int i = 0; i <= num; i++)
         dp[i][0] = 0;
 
-    for(int i = 1; i <= n; i++) {
+    for(int i = 1; i <= num; i++) {
         for(int j = 1; j <= amount; j++) {
 
-            dp[i][j] = dp[i - 1][j];
-
             if(j >= coins[i - 1])
-                dp[i][j] = min(dp[i][j], 1 + dp[i][j - coins[i - 1]]);
+                dp[i][j] = min(dp[i - 1][j], 1 + dp[i][j - coins[i - 1]]);
+            else 
+                dp[i][j] = dp[i - 1][j];   
         }
     }
 
-    if(dp[n][amount] == INF)
-        cout << "Not possible\n";
+    if(dp[num][amount] == INT_MAX - 1)
+        cout<<"Coin change not possible"<<endl;
     else
-        cout << "Minimum Coins = " << dp[n][amount] << endl;
+        cout<<"Total coins used : "<<dp[num][amount]<<endl;
 
     return 0;
 }
