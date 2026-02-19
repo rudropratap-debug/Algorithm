@@ -53,6 +53,6 @@ int main(){
     for(int i = 0; i < k; i++){
         cout<<selectedItems[i]<<" ";
     }
-
+.
     return 0;
 }
