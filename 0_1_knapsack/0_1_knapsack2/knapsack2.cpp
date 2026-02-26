@@ -44,5 +44,23 @@ int main() {
 
     cout<<"Maximum Profit = "<<k[n][capacity]<<endl;
 
-    return 0;
+
+    int i = n;
+    int j = capacity;
+
+
+    cout<<"Selected items: ";6
+    while(i > 0 && j > 0) {
+
+        if(k[i][j] != k[i-1][j]) {   
+            cout << i << " ";
+            j = j - weight[i];      
+        }
+
+        i--;  
+    }
+
+    cout << endl;
+
+    
 }
