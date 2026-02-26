@@ -1,6 +1,5 @@
 // Profit / Weight approach for maximum weight 
 
-
 #include<iostream>
 using namespace std;
 
