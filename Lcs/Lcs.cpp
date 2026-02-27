@@ -31,5 +31,26 @@ int main(){
     }
 
     cout<<"Lcs length: "<<dp[n][m]<<endl;
+
+    int i = n, j = m;
+    string lcs = "";
+
+    while(i > 0 && j > 0){
+        if(str1[i-1] == str2[j-1]){
+            lcs += str1[i-1];   // add character
+            i--;
+            j--;
+        }
+        else if(dp[i-1][j] > dp[i][j-1]){
+            i--;
+        }
+        else{
+            j--;
+        }
+    }
+
+    reverse(lcs.begin(), lcs.end());
+
+    cout<<"LCS string: "<<lcs<<endl;
     return 0;
 }
